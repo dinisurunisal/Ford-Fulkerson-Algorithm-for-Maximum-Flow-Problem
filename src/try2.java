@@ -72,7 +72,7 @@ public class try2 {
 
                 pathString= "S"+pathString;		//loop stops before it gets to S, so add S to the beginning
                 System.out.println("Augmentation path \n"+pathString);
-                System.out.println("bottleneck (min flow on path added to max flow) = "+flow_capacity +"\n");
+                System.out.println("Min flow on path added to max flow = "+flow_capacity +"\n");
 
                 //update the residual graph
                 //reduce the capacity on fwd edge by flow_capacity
@@ -139,7 +139,7 @@ public class try2 {
         String[] arrayIndexStringEquivalents = {"S", "1", "2", "3", "4", "T"};	//map human readable names to each vertex, not just array indexes
 
         int vertices = 6;
-        File file =  new File("C:\\Users\\dinis\\IdeaProjects\\AlgoCoursework\\src\\k1.txt");
+        File file =  new File("C:\\Users\\dinis\\IdeaProjects\\AlgoCoursework\\src\\k12.txt");
         Scanner scan = new Scanner(file);
         int row = scan.nextInt();
         int col = scan.nextInt();
@@ -160,7 +160,16 @@ public class try2 {
         Graph g = new Graph(vertices, graph, arrayIndexStringEquivalents);
         int source = 0;
         int destination = 5;
+
+        //Watch Starts
+        Stopwatch stopwatch=new Stopwatch();
+
         int max_flow = g.findMaxFlow(source,destination);
+
+        //Watch Ends
+        double time=stopwatch.elapsedTime();
+        System.out.println("Elapsed Time : "+time);
+
         System.out.println("Maximum flow from source: " + source + " to destination: " + destination
                 + " is: " + max_flow);
     }
